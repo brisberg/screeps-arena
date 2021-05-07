@@ -1,0 +1,27 @@
+{
+  "name": "@brisberg/screeps-arena",
+  "version": "0.1.0",
+  "description": "AI for playing Screeps Arena",
+  "main": "main.mjs",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brisberg/screeps-arena.git"
+  },
+  "keywords": [
+    "screeps"
+  ],
+  "author": "Brandon Risberg",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brisberg/screeps-arena/issues"
+  },
+  "homepage": "https://github.com/brisberg/screeps-arena#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "prettier": "^2.2.1"
+  }
+}
