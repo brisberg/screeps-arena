@@ -1,3 +1,4 @@
+import { getDirection } from "/game";
 import { searchPath } from "/game/path-finder";
 
 export function flee(creep, targets, range) {
