@@ -1,5 +1,5 @@
 import {getDistance} from '/game';
-import {flee} from '../movement/flee.mjs';
+import {flee} from '../movement/flee';
 
 export function healer(creep, myCreeps, enemyCreeps, enemyFlag) {
     const targets = myCreeps.filter(i => i !== creep && i.hits < i.hitsMax)

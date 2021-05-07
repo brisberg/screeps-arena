@@ -1,5 +1,5 @@
 import {getDistance} from '/game';
-import {flee} from '../movement/flee.mjs';
+import {flee} from '../movement/flee';
 
 export function rangedAttacker(creep, enemyCreeps, enemyFlag) {
     const targets = enemyCreeps.filter(i => true)
