@@ -1,7 +1,13 @@
-import { getDistance } from "/game";
+import { Creep, getDistance } from "/game";
 import { flee } from "../movement/flee";
+import { Flag } from "/arena";
 
-export function healer(creep, myCreeps, enemyCreeps, enemyFlag) {
+export function healer(
+  creep: Creep,
+  myCreeps: Creep[],
+  enemyCreeps: Creep[],
+  enemyFlag: Flag
+) {
   const targets = myCreeps
     .filter((i) => i !== creep && i.hits < i.hitsMax)
     .sort((a, b) => a.hits - b.hits);

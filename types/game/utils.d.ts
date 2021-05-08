@@ -1,3 +1,4 @@
+import { DirectionConstant } from ".";
 import { RoomObject } from "./prototypes";
 
 /** Get count of game ticks passed since the start of the game */
@@ -18,7 +19,7 @@ export function getObjectsByPrototype<T>(prototype: Class<T>): T[];
 export function getHeapStatistics(): any;
 
 /** Get linear direction by differences of x and y */
-export function getDirection(dx: number, dy: number): number;
+export function getDirection(dx: number, dy: number): DirectionConstant;
 
 /**
  * Find an optimal path between fromPos and toPos. Unlike searchPath,
@@ -31,17 +32,22 @@ export function getDirection(dx: number, dy: number): number;
  * TODO: Actually type the result
  */
 export function findPath(
-  fromPos: RoomObject,
-  toPos: RoomObject,
+  fromPos: Position,
+  toPos: Position,
   opts?: any
 ): number[];
 
 /** Get linear range between two objects. a and b may be any object containing x and y properties. */
-export function getDistance(a: RoomObject, b: RoomObject): number;
+export function getDistance(a: Position, b: Position): number;
 
 /**
  * Get an integer representation of the terrain at the given position.
  * pos should be an object containing x and y properties.
  * Returns TERRAIN_MASK_WALL, TERRAIN_MASK_SWAMP, or 0.
  */
-export function getTerrainAt(pos: RoomObject): number;
+export function getTerrainAt(pos: Position): number;
+
+interface Position {
+  x: number;
+  y: number;
+}

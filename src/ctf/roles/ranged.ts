@@ -1,7 +1,12 @@
-import { getDistance } from "/game";
+import { Creep, getDistance } from "/game";
 import { flee } from "../movement/flee";
+import { Flag } from "/arena";
 
-export function rangedAttacker(creep, enemyCreeps, enemyFlag) {
+export function rangedAttacker(
+  creep: Creep,
+  enemyCreeps: Creep[],
+  enemyFlag: Flag
+) {
   const targets = enemyCreeps
     .filter((i) => true)
     .sort((a, b) => getDistance(a, creep) - getDistance(b, creep));

@@ -1,4 +1,4 @@
-import { RoomObject } from "./prototypes";
+import { Position } from "./utils";
 
 export interface PathSegment {
   x: number;
@@ -16,9 +16,14 @@ export interface SearchOptions {
   flee?: boolean;
 }
 
+export interface SearchGoal {
+  pos: Position;
+  range: number;
+}
+
 export function searchPath(
-  origin: RoomObject,
-  goals: RoomObject[],
+  origin: Position,
+  goals: SearchGoal[],
   opts?: SearchOptions
 ): SearchResult;
 
