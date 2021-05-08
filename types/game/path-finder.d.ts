@@ -1,4 +1,4 @@
-import { Creep } from "./prototypes";
+import { RoomObject } from "./prototypes";
 
 export interface PathSegment {
   x: number;
@@ -7,6 +7,9 @@ export interface PathSegment {
 
 export interface SearchResult {
   path: PathSegment[];
+  opts: number;
+  cost: number;
+  incomplete: boolean;
 }
 
 export interface SearchOptions {
@@ -14,7 +17,24 @@ export interface SearchOptions {
 }
 
 export function searchPath(
-  creep: Creep,
-  targets: Creep[],
+  origin: RoomObject,
+  goals: RoomObject[],
   opts?: SearchOptions
 ): SearchResult;
+
+export class CostMatrix {
+  /**
+   * Creates a new CostMatrix containing 0's for all positions.
+   * searchPath use terrain cost for positions with 0 cost
+   */
+  constructor();
+
+  /** Copy this CostMatrix into a new CostMatrix with the same data. */
+  clone(): CostMatrix;
+
+  /** Set the cost of a position in this CostMatrix. */
+  set(x: number, y: number, cost: number): void;
+
+  /** Get the cost of a position in this CostMatrix. */
+  get(x: number, y: number): number;
+}

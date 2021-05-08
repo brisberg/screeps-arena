@@ -1,4 +1,1 @@
-export class BodyPart {}
-export class Flag {
-  my: boolean;
-}
+export * from "./prototypes";

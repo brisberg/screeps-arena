@@ -1,29 +1,18 @@
 {
   "compilerOptions": {
     "module": "ESNext",
+    "moduleResolution": "Node",
     "target": "ESNext",
     "lib": [
       "DOM",
       "ES2015"
     ],
     "outDir": "dist",
-    "typeRoots": [
-      "types"
-    ],
     "baseUrl": ".",
     "paths": {
-      "/arena": [
-        "types/arena/index.d.ts"
-      ],
-      "/game": [
-        "types/game/index.d.ts"
-      ],
-      "/game/path-finder": [
-        "types/game/path-finder.d.ts"
-      ],
-      "/game/prototypes": [
-        "types/game/prototypes.d.ts"
-      ],
+      "/*": [
+        "./types/*"
+      ]
     }
   },
   "include": [
