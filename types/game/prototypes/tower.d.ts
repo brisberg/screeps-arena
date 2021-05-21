@@ -1,21 +1,10 @@
 import { Creep } from "./creep";
-import { RoomObject } from "./room-object";
+import { OwnedStructure } from "./owned-structure";
+import { Store } from "./store";
 
-export class Tower extends RoomObject {
-  /** The current amount of hit points of the tower. */
-  hits: number;
-
-  /** The maximum amount of hit points of the tower. */
-  hitsMax: number;
-
-  /**
-   * Returns true for your tower, false for a hostile tower, undefined for
-   * a neutral tower.
-   */
-  my: boolean;
-
+export class Tower extends OwnedStructure {
   /** An object that contains a cargo of this structure. Towers can contain only energy. */
-  store: object;
+  store: Store;
 
   /**
    * Remotely attack any creep or structure.

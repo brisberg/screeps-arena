@@ -1,4 +1,5 @@
-import { Creep, getDistance } from "/game";
+import { Creep } from "/game/prototypes";
+import { getRange } from "/game/utils";
 
 export function meleeAttacker(creep: Creep, enemyCreeps: Creep[]) {
   // TODO: Better way to type dynamic memory
@@ -11,8 +12,8 @@ export function meleeAttacker(creep: Creep, enemyCreeps: Creep[]) {
   }
 
   const targets = enemyCreeps
-    .filter((i) => getDistance(i, mcreep.initialPos) < 10)
-    .sort((a, b) => getDistance(a, mcreep) - getDistance(b, mcreep));
+    .filter((i) => getRange(i, mcreep.initialPos) < 10)
+    .sort((a, b) => getRange(a, mcreep) - getRange(b, mcreep));
 
   if (targets.length > 0) {
     mcreep.moveTo(targets[0]);

@@ -1,5 +1,6 @@
-import { Creep, getDirection, Position } from "/game";
 import { searchPath } from "/game/path-finder";
+import { Creep, Position } from "/game/prototypes";
+import { getDirection } from "/game/utils";
 
 export function flee(creep: Creep, targets: Position[], range: number) {
   let result = searchPath(

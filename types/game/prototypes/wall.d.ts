@@ -1,8 +1,3 @@
-import { RoomObject } from "./room-object";
+import { Structure } from "./structure";
 
-export class Wall extends RoomObject {
-  /** The current amount of hit points of the wall. */
-  hits: number;
-  /** The maximum amount of hit points of the wall. */
-  hitsMax: number;
-}
+export class Wall extends Structure {}

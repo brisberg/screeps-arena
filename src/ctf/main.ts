@@ -1,15 +1,10 @@
 // This stuff is arena-specific
-import { BodyPart, Flag } from "/arena";
+import { Flag } from "/arena";
 // Everything can be imported either from the root /game module or corresponding
 // submodules
-import {
-  ATTACK,
-  getObjectsByPrototype,
-  getTime,
-  HEAL,
-  RANGED_ATTACK,
-} from "/game";
+import { ATTACK, HEAL, RANGED_ATTACK } from "/game/constants";
 import { Creep } from "/game/prototypes";
+import { getObjectsByPrototype, getTime } from "/game/utils";
 
 // You can also import your files like this:
 import { healer } from "./roles/healer";
@@ -25,7 +20,7 @@ let myCreeps: Creep[], enemyCreeps: Creep[], enemyFlag: Flag;
 // This is the only exported function from the main module. It is called every
 // tick.
 export function loop() {
-  if (getTime() === 0) {
+  if (getTime() === 1) {
     // We assign global variables here. They will be accessible throughout the
     // tick, and even on the following ticks too. getObjectsByPrototype function
     // is the alternative to Room.find from Screeps World. There is no

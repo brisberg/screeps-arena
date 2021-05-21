@@ -1,6 +1,7 @@
-import { Creep, getDistance } from "/game";
 import { flee } from "../movement/flee";
 import { Flag } from "/arena";
+import { Creep } from "/game/prototypes";
+import { getRange } from "/game/utils";
 
 export function healer(
   creep: Creep,
@@ -19,11 +20,11 @@ export function healer(
   }
 
   const healTargets = myCreeps
-    .filter((i) => getDistance(i, creep) <= 3)
+    .filter((i) => getRange(i, creep) <= 3)
     .sort((a, b) => a.hits - b.hits);
 
   if (healTargets.length > 0) {
-    if (getDistance(healTargets[0], creep) === 1) {
+    if (getRange(healTargets[0], creep) === 1) {
       creep.heal(healTargets[0]);
     } else {
       creep.rangedHeal(healTargets[0]);
@@ -31,9 +32,7 @@ export function healer(
   }
 
   const range = 7;
-  const enemiesInRange = enemyCreeps.filter(
-    (i) => getDistance(i, creep) < range
-  );
+  const enemiesInRange = enemyCreeps.filter((i) => getRange(i, creep) < range);
   if (enemiesInRange.length > 0) {
     flee(creep, enemiesInRange, range);
   }

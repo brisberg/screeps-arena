@@ -1,5 +1,6 @@
-import { DirectionConstant } from ".";
-import { RoomObject } from "./prototypes";
+import { DirectionConstant } from "./constants";
+import { Position, RoomObject } from "./prototypes";
+import { Structure } from "./prototypes/structure";
 
 /** Get count of game ticks passed since the start of the game */
 export function getTime(): number;
@@ -38,7 +39,7 @@ export function findPath(
 ): number[];
 
 /** Get linear range between two objects. a and b may be any object containing x and y properties. */
-export function getDistance(a: Position, b: Position): number;
+export function getRange(a: Position, b: Position): number;
 
 /**
  * Get an integer representation of the terrain at the given position.
@@ -47,7 +48,33 @@ export function getDistance(a: Position, b: Position): number;
  */
 export function getTerrainAt(pos: Position): number;
 
-interface Position {
-  x: number;
-  y: number;
-}
+/** Find all positions from the given positions array within the specified linear range. */
+export function findInRange(
+  fromPos: Position,
+  positions: Position[],
+  range: number
+): Position[];
+
+/** Find a position with the shortest linear distance from the given position, or null otherwise. */
+export function findClosestByRange(
+  fromPos: Position,
+  positions: Position[]
+): Position | null;
+
+/** Find a position with the shortest path from the given position, or null otherwise. */
+export function findClosestByPath(
+  fromPos: Position,
+  positions: Position[],
+  opts: any
+): Position | null;
+
+/**
+ * Create a new construction site at the specified location. Returns the
+ * ConstructionSite object instance. You can create maximum 10 active
+ * construction sites.
+ */
+export function createConstructionSite(
+  x: number,
+  y: number,
+  structurePrototype: typeof Structure
+): number;

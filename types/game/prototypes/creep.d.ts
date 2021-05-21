@@ -1,6 +1,10 @@
-import { BodyPartConstant, DirectionConstant } from "..";
-import { Position } from "../utils";
-import { RoomObject } from "./room-object";
+import {
+  BodyPartConstant,
+  DirectionConstant,
+  ResourceConstant,
+} from "../constants";
+import { RoomObject, Position } from "./room-object";
+import { Store } from "./store";
 
 export class Creep extends RoomObject {
   /** An array describing the creep’s body. */
@@ -17,6 +21,9 @@ export class Creep extends RoomObject {
 
   /** Fatigue indicator of the creep. It can move only when fatigue equals to 0. */
   fatigue: number;
+
+  /** An object that contains store contents of this creep. */
+  store: Store;
 
   /**
    * Attack another creep or structure in a short-ranged attack.
@@ -73,6 +80,32 @@ export class Creep extends RoomObject {
    * Friendly units are not affected.
    */
   rangedMassAttack(): number;
+
+  /** Withdraw resources from a structure. */
+  withdraw(
+    target: RoomObject,
+    resourceType: ResourceConstant,
+    amount: number
+  ): number;
+
+  /** Transfer resources to a structure or a creep. */
+  transfer(
+    target: RoomObject,
+    resourceType: ResourceConstant,
+    amount: number
+  ): number;
+
+  /** Collect energy from a source. */
+  harvest(target: RoomObject): number;
+
+  /** Drop a resource onto the ground. */
+  drop(resourceType: ResourceConstant, amount: number): number;
+
+  /** Take a resource from the ground. */
+  pickup(target: RoomObject): number;
+
+  /** Build a structure at the target construction site using carried energy. */
+  build(target: RoomObject): number;
 }
 
 export interface BodyPartDefinition {

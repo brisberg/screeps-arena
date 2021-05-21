@@ -1,4 +1,4 @@
-import { Position } from "./utils";
+import { Position } from "./prototypes";
 
 export interface PathSegment {
   x: number;
